@@ -1,0 +1,82 @@
+@import '@fontsource/barlow/400.css';
+@import '@fontsource/barlow/500.css';
+@import '@fontsource/barlow/600.css';
+@import '@fontsource/barlow-condensed/600.css';
+@import '@fontsource/barlow-condensed/700.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Barlow', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Barlow Condensed', 'Barlow', ui-sans-serif, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --color-ink: #15181d;
+  --color-ink-2: #23272e;
+  --color-paper: #f4f1eb;
+  --color-card: #fffdf9;
+  --color-line: #dcd5c9;
+  --color-muted: #5b6168;
+  --color-copper: #a8552a;
+  --color-copper-deep: #8a431f;
+  --color-copper-bright: #e3a06f;
+  --color-copper-soft: #f2e2d4;
+  --color-open: #1d7247;
+  --color-later: #85590a;
+  --color-shut: #a3352b;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-bold tracking-tight;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-copper;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+  .eyebrow {
+    @apply font-display text-sm font-semibold uppercase tracking-[0.14em] text-copper-deep;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md font-semibold whitespace-nowrap transition-colors select-none disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-lg {
+    @apply h-12 px-5 text-base;
+  }
+  .btn-primary {
+    @apply bg-copper text-white hover:bg-copper-deep;
+  }
+  .btn-dark {
+    @apply bg-ink text-paper hover:bg-ink-2;
+  }
+  .btn-outline {
+    @apply border border-ink/25 bg-card text-ink hover:border-ink/50 hover:bg-white;
+  }
+  .btn-ghost-light {
+    @apply border border-white/25 text-paper hover:border-white/60 hover:bg-white/5;
+  }
+  .card {
+    @apply rounded-lg border border-line bg-card;
+  }
+  .field {
+    @apply block w-full rounded-md border border-ink/20 bg-white px-3 py-2.5 text-base text-ink placeholder:text-muted/70 focus:border-copper focus:outline-none focus:ring-2 focus:ring-copper/25;
+  }
+  .field[aria-invalid='true'] {
+    @apply border-shut ring-2 ring-shut/15;
+  }
+}
